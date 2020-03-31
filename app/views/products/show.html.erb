@@ -1,3 +1,26 @@
-<div class="columns">
-<%= render @product %>
+<div class ="column">
+<div class="card">
+   <% if @product.product_image.present?%>
+    <div class="card-image">
+     <figure class="image is-4by3">
+       <%= image_tag @product.product_image%>
+     </figure>
+   </div>
+  <%end%>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4"><%= @product.name%></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= @product.description%>
+      <br>
+    </div>
+     <footer class="card-footer">
+    <a><%= link_to 'add to cart', add_to_cart_path(@product.id),method: :post%></a>
+  </footer>
+  </div>
+</div>
 </div>

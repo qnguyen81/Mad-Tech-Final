@@ -1,0 +1,27 @@
+ <table class="table">
+  <thead>
+    <tr>
+      <th><abbr title="Position">Product</abbr></th>
+      <th><abbr title="Points">Price</abbr></th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product|%>
+ <tr>
+      <th><%=product.name%></th>
+      <td>$<%=product.price%></td>
+      <td><%=product.description%></td>
+
+      <td><input type="number"  readonly min=1 name="quality" value=<%=@cart["#{product.id}"]%>>
+            <input  type="hidden" name="id" value=<%=product.id%>></td>
+            <td><a><%= link_to 'Add', add_quantity_path(product.id),method: :post%></a></td>
+                 <%if @cart["#{product.id}"].to_i > 1%>
+              <td><a><%= link_to 'Add', subtract_quantity_path(product.id),method: :post%></a></td>
+            <%end%>
+
+      <td> <a><%= link_to 'Delete', remove_from_cart_path(product.id),method: :post%></a></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

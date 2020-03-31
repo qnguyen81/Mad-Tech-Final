@@ -1,3 +1,14 @@
+
+<h1>Welcome to Mad Tech - Choose what you are buying today:
 <% @categories.each do |category| %>
-  <p><%= link_to category.name, category %></p>
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      <p><%= link_to category.name, category %></p>
+      <br>
+    </div>
+     <footer class="card-footer">
+  </footer>
+  </div>
+</div>
 <% end %>
