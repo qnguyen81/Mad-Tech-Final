@@ -1,0 +1,17 @@
+<div class='container'>
+<h1 class = 'title is-1'>Search Result</h1>
+<br>
+<% @results.each do |result| %>
+    <br>
+<div class="card">
+  <div class="card-content">
+    <div class="content has-text-centered">
+      <p><%=link_to result.name,result %><br></p>
+      <br>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>
+
+

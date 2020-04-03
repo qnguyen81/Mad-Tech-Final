@@ -1,26 +1,39 @@
-<div class ="column">
-<div class="card">
-   <% if @product.product_image.present?%>
-    <div class="card-image">
-     <figure class="image is-4by3">
-       <%= image_tag @product.product_image%>
-     </figure>
-   </div>
-  <%end%>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-content">
-        <p class="title is-4"><%= @product.name%></p>
-      </div>
-    </div>
+<section class="hero is-fullheight is-default is-bold">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    <div class="column is-6">
+                           <% if @product.product_image.present?%>
+                                  <figure class="image is-6by3">
+                                    <%= image_tag @product.product_image%>
+                                </figure>
+                           <%end%>
+                    </div>
+                    <div class="column is-6 is-offset-1">
+                        <h1 class="title is-2">
+                            <%= @product.name%>
+                        </h1>
+                        <h2 class="subtitle is-4">
+                            <%= @product.description%>
+                        </h2>
+                        <br>
+                        <p class="has-text-centered">
+                            <a class = "add_button">
+                                <%= button_to 'add to cart', add_to_cart_path(@product.id),method: :post%>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="content">
-      <%= @product.description%>
-      <br>
-    </div>
-     <footer class="card-footer">
-    <a><%= link_to 'add to cart', add_to_cart_path(@product.id),method: :post%></a>
-  </footer>
-  </div>
-</div>
-</div>
+        <div class="hero-foot">
+            <div class="container">
+                <div class="tabs is-centered">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>

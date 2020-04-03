@@ -8,10 +8,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
 
-  <body>
-
+  <body class = "container">
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item">
@@ -30,30 +30,41 @@
       <a class="navbar-item" href="/">
         Home
       </a>
+      <a class="navbar-item" href="/categories">
+        Category
+      </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" >
           More
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <a class="navbar-item" href='/about'>
             About
           </a>
-          <a class="navbar-item">
+          <a class="navbar-item" href='/contact'>
             Contact
           </a>
           <hr class="navbar-divider">
         </div>
       </div>
+      <a class="navbar-item">
+  <%= form_tag(search_page_path, :method => "get",
+    class: 'navbar-form navbar-left') do %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "input is-primary" %>
+    <% end %>
+</a>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-          <a href="/cart">
-          cart
-        </a>
-      </div>
+    <div class="navbar-end cart">
+          <div id="navbar-item">
+            <span class="fa-stack fa-1x" data-count="5" href="/cart">
+            <a href="/cart">
+           <i  class="fa fa-shopping-cart fa-stack-2x"></i>
+           </a>
+          </span>
+    </div>
     </div>
   </div>
 </nav>

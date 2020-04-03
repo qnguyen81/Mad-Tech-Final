@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+ .fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:0%;
+  content: attr(data-count);
+  font-size:55%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: black;
+  text-align:center;
+  min-width:2em;
+  font-weight:bold;
+  background: white;
+}
+
+.fa-stack:hover{
+  cursor: pointer;
+}
+
+.cart{
+  padding-top: 10px;
+}
+

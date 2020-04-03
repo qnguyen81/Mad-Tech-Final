@@ -1,27 +1,59 @@
- <table class="table">
-  <thead>
-    <tr>
-      <th><abbr title="Position">Product</abbr></th>
-      <th><abbr title="Points">Price</abbr></th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @products.each do |product|%>
- <tr>
-      <th><%=product.name%></th>
-      <td>$<%=product.price%></td>
-      <td><%=product.description%></td>
+<% if @products.count != 0 %>
+<div class="wrap cf">
+  <h1 class="projTitle">Shopping Cart</h1>
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <a href="/" class="continue">Continue Shopping</a>
 
-      <td><input type="number"  readonly min=1 name="quality" value=<%=@cart["#{product.id}"]%>>
-            <input  type="hidden" name="id" value=<%=product.id%>></td>
-            <td><a><%= link_to 'Add', add_quantity_path(product.id),method: :post%></a></td>
-                 <%if @cart["#{product.id}"].to_i > 1%>
-              <td><a><%= link_to 'Add', subtract_quantity_path(product.id),method: :post%></a></td>
+  </div>
+  <div class="cart">
+    <ul class="cartWrap" >
+    <% subtotal = 0 %>
+    <% @products.each do |product|%>
+       <% subtotal += product.price.to_f * @cart["#{product.id}"].to_f %>
+      <li class="items odd" style="display: flex; ">
+        <figure class="image is-48x48"  style="float: left; padding-right:10px">
+         <%= image_tag product.product_image , style:"height: 100; width: 100;"%>
+        </figure>
+        <div class="infoWrap">
+        <div class="cartSection" style="display: flex; justify-content:space-between" >
+        <div>
+         <h3><%=product.name%></h3>
+        </div>
+          <div class="quantity" style="display: flex;">
+           <%=button_to "+", { action: "add_quantity", id:product.id, quantity:@cart["#{product.id}"] },
+                                  method: :post, class: "btn"%>
+             <input class="input" type="number" readonly min=1 name="quality" value=<%=@cart["#{product.id}"]%> style="width:50px; height:10px text-align: center; ">
+            <%if @cart["#{product.id}"].to_i > 1%>
+              <%=button_to "-", { action: "subtract_quantity", id:product.id, quantity:@cart["#{product.id}"] },
+                                    method: :post, class: "btn"%>
             <%end%>
+        </div>
+        </div>
 
-      <td> <a><%= link_to 'Delete', remove_from_cart_path(product.id),method: :post%></a></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+        <div class="prodTotal cartSection">
+          <p>$<%=product.price.to_f * @cart["#{product.id}"].to_f %></p>
+        </div>
+              <div class="cartSection removeWrap">
+           <a><%= link_to 'Remove', remove_from_cart_path(product.id),method: :post%></a>
+        </div>
+      </div>
+
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="subtotal cf">
+    <ul>
+      <li class="totalRow"><span class="label">Subtotal</span><span class="value">$<%=subtotal%></span></li>
+      <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+    </ul>
+  </div>
+</div>
+<%else %>
+    <h1 class="projTitle">Shopping Cart Is Empty</h1>
+<%end%>
+
+
+

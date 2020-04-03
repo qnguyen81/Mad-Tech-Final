@@ -1,0 +1,22 @@
+<% @contacts.each do |contact| %>
+<section class="hero is-fullheight">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="columns is-8 is-variable ">
+					<div class="column is-two-thirds has-text-left">
+						<h1 class="title is-1"><%=contact.header %></h1>
+						<p class="is-size-4"><%=contact.content %></p>
+            <p class="is-size-4">Phone Number: <%=contact.phone %></p>
+            <p class="is-size-4">Email Address: <%=contact.email %></p>
+            <p class="is-size-4">Address<%=contact.address %></p>
+					</div>
+					<div class="column is-one-third has-text-left">
+					 <div>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10279.70223000535!2d-97.1411792!3d49.9002009!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe064da6c408f4b3b!2sRed%20River%20College%20-%20The%20Roblin%20Centre!5e0!3m2!1svi!2sca!4v1585891065488!5m2!1svi!2sca"  height="450" style="border:0; width: 100%" allowfullscreen=""></iframe>
+          </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+  <%end%>
