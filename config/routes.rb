@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   post 'subtract_quantity/:id', to: 'cart#subtract_quantity', as: 'subtract_quantity'
   post 'products/add_to_cart/:id', to: 'cart#add_to_cart', as: 'add_to_cart'
   post 'remove_from_cart/:id', to: 'cart#remove_from_cart', as: 'remove_from_cart'
+
+  scope '/check_out' do
+    post 'create', to: 'check_out#create', as: 'check_out_create'
+    get 'cancel', to: 'check_out#cancel', as: 'check_out_cancel'
+    get 'success', to: 'check_out#success', as: 'check_out_success'
+  end
 end

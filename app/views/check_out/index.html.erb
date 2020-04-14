@@ -107,6 +107,7 @@
       </p>
     </div>
   </div>
+  <%= button_to "Make a payment", check_out_create_path, method: :post, params: {total: @total}, remote: true, class: ""%>
 </div>
 </div>
 
