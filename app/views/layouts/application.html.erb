@@ -56,6 +56,22 @@
     <% end %>
 </a>
     </div>
+      <% if !customer_signed_in?%>
+            <a class="navbar-item" href="/customers/sign_in" >
+                Login
+            </a>
+          <%else%>
+             <a class="navbar-item" href="/customers/edit">
+                Profile
+            </a>
+            <a   class="navbar-item" href="/" >
+                My Orders
+            </a>
+
+            <a class="navbar-item" href="/customers/sign_out"  data-method="delete" rel="nofollow">
+                Log out
+            </a>
+          <%end%>
 
     <div class="navbar-end cart">
           <div id="navbar-item">

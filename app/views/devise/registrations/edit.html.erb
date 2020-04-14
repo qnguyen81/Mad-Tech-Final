@@ -31,6 +31,16 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+    <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class:"mdl-textfield__input", value: current_customer.name  %>
+  </div>
+
+    <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, class:"mdl-textfield__input", value: current_customer.address  %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

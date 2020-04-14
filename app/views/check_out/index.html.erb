@@ -1,0 +1,113 @@
+<div class = "container">
+    <main>
+        <div >
+            <div>
+                <h4 class = "title is-2"> Check Out</h4>
+            </div>
+
+            <div>
+                 <h5 ><a href="/cart">Edit your Cart</a></h5>
+                <ol>
+                    <%@features.each do |feature| %>
+                    <li>
+                         <div>
+                            <div class="field is-horizontal">
+                              <div class="field-label is-normal">
+                                <label class="label"><%=feature.name%></label>
+                              </div>
+                              <div class="field-body">
+                                <div class="field">
+                                  <p class="control">
+                                    <input class="input is-static" type="email" value="$<%=feature.price%> x <%=@cart["#{feature.id}"]%>" readonly>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </li>
+                    <%end%>
+                </ol>
+            </div>
+
+<h2 class = "title is-4">Order Summary</h2>
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Subtotal</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="$<%=@sub_total%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Tax total</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="<%=@total_tax%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Total</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="<%=@total%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+  </main>
+  <h2 class = "title is-4">Billing and Shipping Address <a href="/customers/edit">edit</a></h2>
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Name</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="<%=@customer.name%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Address</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="<%=@customer.address%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
+    <label class="label">Email</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="<%=@customer.email%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+
