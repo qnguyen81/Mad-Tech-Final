@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get '/search' => 'products#search', as: 'search_page'
   get 'cart', to: 'cart#index'
   get 'show/:id', to: 'products#show', as: 'show'
-  get '/check_out', to: 'check_out#index', as: 'check_out_index'
+  get '/check_out', to: 'check_out#index', as: 'check_out'
+
   post '/add_quantity/:id', to: 'cart#add_quantity', as: 'add_quantity'
   post 'subtract_quantity/:id', to: 'cart#subtract_quantity', as: 'subtract_quantity'
   post 'products/add_to_cart/:id', to: 'cart#add_to_cart', as: 'add_to_cart'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 
   scope '/check_out' do
     post 'create', to: 'check_out#create', as: 'check_out_create'
-    get 'cancel', to: 'check_out#cancel', as: 'check_out_cancel'
+    get 'cancel', to: 'check_out#index', as: 'check_out_cancel'
     get 'success', to: 'check_out#success', as: 'check_out_success'
   end
 end

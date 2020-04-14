@@ -24,6 +24,11 @@ class CheckOutController < ApplicationController
 
   def create
     @total = params[:total].to_i
+    if @total.nil?
+      redirect_yo root_path
+      return
+    end
+
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
@@ -32,8 +37,8 @@ class CheckOutController < ApplicationController
         currency: 'cad',
         quantity: 1
       }],
-      success_url: check_out_success_url + '?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: check_out_index_url
+      success_url: check_out_success_url,
+      cancel_url: check_out_cancel_url
     )
 
     respond_to do |format|
