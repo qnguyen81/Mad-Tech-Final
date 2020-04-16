@@ -98,6 +98,19 @@
 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
+    <label class="label">Province</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" type="email" value="<%=@customer.province.name%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+  <div class="field-label is-normal">
     <label class="label">Email</label>
   </div>
   <div class="field-body">
@@ -107,8 +120,8 @@
       </p>
     </div>
   </div>
- <%= button_to "Make a payment", check_out_create_path, method: :post, params: {total: @total}, remote: true%>
 </div>
+ <%= button_to "Make a payment", check_out_create_path, method: :post, params: {total: @total}, remote: true%>
 </div>
 
 

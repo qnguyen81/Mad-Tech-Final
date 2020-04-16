@@ -1,0 +1,81 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <main class="mdl-layout__content">
+    <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <h4 class="mdc-typography--headline4"> <i class="material-icons">
+                    check_circle
+                    </i> Order Number: <%=@order_id%>
+                </h4>
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <p>Status:</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <p style="color:green"><%=@order.status%></p>
+                    </div>
+                  </div>
+
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <p>Date:</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <p ><%=@order.created_at%></p>
+                    </div>
+                  </div>
+
+            </div>
+    </div>
+     <div class="mdl-cell mdl-cell--6-col">
+                 <h5 class="mdc-typography--headline4"> <i class="material-icons">storefront</i> Your Purchase</h5>
+                <ol>
+                 <%@order.order_details.each do |item| %>
+                    <li>
+                         <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col">
+                            </div>
+
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <p>$<%=item.price%> x <%=item.quantity%> = $<%=item.price.to_d*item.quantity.to_d%></p>
+                            </div>
+                        </div>
+                    </li>
+                    <%end%>
+
+                </ol>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col">
+                <h5 class="mdc-typography--headline4"> <i class="material-icons">event_note</i> Order Summary </h5>
+                 <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <p style="color:red">Total: </p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                         <P>$<%=@order.amount%></P>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <p>GST: </p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                         <P>$<%=@order.gst.to_d/100*@order.amount%></P>
+                    </div>
+                     <div class="mdl-cell mdl-cell--4-col">
+                        <p>PST: </p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                         <P>$<%=@order.pst.to_d/100*@order.amount%></P>
+                    </div>
+                     <div class="mdl-cell mdl-cell--4-col">
+                        <p>HST: </p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                         <P>$<%=@order.hst.to_d/100*@order.amount%></P>
+                    </div>
+
+
+                 </div>
+            </div>
+
+  </main>
+</div>

@@ -2,7 +2,7 @@
 
 class ProductsController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.all.page(params[:page]).per(2)
   end
 
   def show
@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
       redirect_to(root_path, alert: 'Empty field!') && return
     else
       @parameter = params[:search].downcase
-      @results = Category.where('lower(name) LIKE :search', search: @parameter)
+      @results = Category.where('lower(name) LIKE ?', "%#{@parameter}%")
+      @result2 = Product.where('lower(name) LIKE ?', "%#{@parameter}%")
     end
   end
 end

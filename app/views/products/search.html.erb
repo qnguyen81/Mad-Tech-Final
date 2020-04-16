@@ -1,6 +1,11 @@
 <div class='container'>
 <h1 class = 'title is-1'>Search Result</h1>
 <br>
+<%if @results.count ==0 and @result2.count==0 %>
+  <h1 class = 'title is-5'>No result found</h1>
+<%else%>
+<%if @results.count > 0 %>
+ <h1 class = 'title is-5'>Category</h1>
 <% @results.each do |result| %>
     <br>
 <div class="card">
@@ -12,6 +17,23 @@
   </div>
 </div>
 <% end %>
+<% end %>
+<%if @result2.count > 0 %>
+ <h1 class = 'title is-5'>Product</h1>
+<% @result2.each do |result| %>
+    <br>
+<div class="card">
+  <div class="card-content">
+    <div class="content has-text-centered">
+      <p><%=link_to result.name,result %><br></p>
+      <br>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+
+<%end%>
 </div>
 
 

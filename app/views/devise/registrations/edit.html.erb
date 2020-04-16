@@ -41,6 +41,14 @@
     <%= f.text_field :address, class:"mdl-textfield__input", value: current_customer.address  %>
   </div>
 
+   <div class="field">
+    <label for="province_province_id"> Province </label>
+    <div class="select-style">
+    <%= collection_select :customer, :province_id, Province.all, :id, :name%>
+    </div>
+  </div>
+  <br/>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

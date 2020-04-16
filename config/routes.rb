@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   resources :products
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'products#index'
+  get 'my_orders/show/:id' => 'my_orders#show'
   get '/about' => 'abouts#index'
   get '/contact' => 'contacts#index'
   get '/search' => 'products#search', as: 'search_page'
   get 'cart', to: 'cart#index'
   get 'show/:id', to: 'products#show', as: 'show'
   get '/check_out', to: 'check_out#index', as: 'check_out'
+  get 'my_orders', to: 'my_orders#index'
 
   post '/add_quantity/:id', to: 'cart#add_quantity', as: 'add_quantity'
   post 'subtract_quantity/:id', to: 'cart#subtract_quantity', as: 'subtract_quantity'

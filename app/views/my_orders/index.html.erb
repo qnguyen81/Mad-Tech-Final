@@ -1,0 +1,54 @@
+<div class = "container">
+    <main>
+        <div>
+            <div>
+                <h4 class = "title is-2"> My Orders</h4>
+            </div>
+ <% @orders.each do |order|%>
+ <div class="order">
+<div class="field is-horizontal">
+   <div class="field-label is-normal">
+    <label class="label">Purchase Date</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" value="<%=order.created_at%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+   <div class="field-label is-normal">
+    <label class="label">Status</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" value="<%=order.status%>" readonly>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="field is-horizontal">
+   <div class="field-label is-normal">
+    <label class="label">Amount</label>
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <p class="control">
+        <input class="input is-static" value="$<%=order.amount%>" readonly>
+        <a href="/my_orders/show/<%=order.id%>">Open</i> </a>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+<%end%>
+</div>
+</main>
+</div>
+
+
