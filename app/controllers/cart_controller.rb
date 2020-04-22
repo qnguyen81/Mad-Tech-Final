@@ -17,8 +17,6 @@ class CartController < ApplicationController
     @product_id = params[:product_id]
     @quantity = 1
     @new_hash = { @products.id => @product_id }
-    @new_hash1 = { @products_id => @quantity }
-    @new_hash.merge!(@new_hash1)
     @cart.merge!(@new_hash)
     session[:cart] = @cart
   end
