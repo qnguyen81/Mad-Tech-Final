@@ -191,23 +191,6 @@ body {
 
 }
 
- .special {
-   display: block;
-  .specialContent {
-   padding: 1em 1em 0;
-    display: block;
-   margin-top:.5em;
-   border-top: 1px solid #dadada;
-   &:before {
-     content: "\21b3";
-     font-size: 1.5em;
-      margin-right: 1em;
-     color: #6f6f6f;
-     font-family: helvetica, arial, sans-serif;
-   }}
-
- }
-
 a.remove {
   text-decoration: none;
   color: #ffffff;

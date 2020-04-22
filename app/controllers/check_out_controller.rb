@@ -44,8 +44,6 @@ class CheckOutController < ApplicationController
     respond_to do |format|
       format.js
     end
-
-    # test
     @customer = current_customer
 
     @cart = session[:cart] if session[:cart].present?
@@ -68,12 +66,6 @@ class CheckOutController < ApplicationController
     @total_tax =  @hst_total + @gst_total + @pst_total
 
     @total1 = @sub_total + @total_tax
-
-    @order = Order.create(status: 'Paid', amount: @total, shipping_address: @customer.address, gst: @gst,
-                          pst: @pst, hst: @hst, customer_id: @customer.id)
-    @products.each do |product|
-      OrderDetail.create(price: product.price, quantity: @cart[product.id.to_s], product_id: product.id, order_id: @order.id)
-    end
   end
 
   def success
