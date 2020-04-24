@@ -7,15 +7,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-if Rails.env.development?
-  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
-end
+# if Rails.env.development?
+#   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+# end
 
-# data = File.read("#{Rails.root}/public/canadian-provinces.json")
-# records = JSON.parse(data)
+# province_data = File.read("#{Rails.root}/public/canadian-provinces.json")
+# records = JSON.parse(province_data)
 # records.each do |_short, full|
 #   Province.create!(name: full)
 # end
 # puts "#{Province.count} are seeded"
-# category = Category.create(name: 'laptop', description: 'testkjndskf')
-# category.products.create(name: 'macbook', price: 999, description: 'test')
+category = Category.where('lower(name) LIKE ?', '%laptop%')
+puts category.name
+# laptop_data = File.read("#{Rails.root}/public/laptops.csv")
+# laptops = JSON.parse(laptop_data)
+# laptops.each do |_short, full|
+#   # category.products.create(name: full.Product, price: full.Price_euros, description: full.Inches + full.TypeName + )
+#   # puts full.Product
+# end
