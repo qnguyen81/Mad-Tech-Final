@@ -10,20 +10,20 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'products#index'
   get 'my_orders/show/:id' => 'my_orders#show'
-  get '/about' => 'abouts#index'
-  get '/contact' => 'contacts#index'
-  get '/search' => 'products#search', as: 'search_page'
+  get 'about' => 'abouts#index'
+  get 'contact' => 'contacts#index'
+  get 'search' => 'products#search', as: 'search_page'
   get 'cart', to: 'cart#index'
   get 'show/:id', to: 'products#show', as: 'show'
-  get '/check_out', to: 'check_out#index', as: 'check_out'
+  get 'check_out', to: 'check_out#index', as: 'check_out'
   get 'my_orders', to: 'my_orders#index'
 
-  post '/add_quantity/:id', to: 'cart#add_quantity', as: 'add_quantity'
+  post 'add_quantity/:id', to: 'cart#add_quantity', as: 'add_quantity'
   post 'subtract_quantity/:id', to: 'cart#subtract_quantity', as: 'subtract_quantity'
   post 'products/add_to_cart/:id', to: 'cart#add_to_cart', as: 'add_to_cart'
   post 'remove_from_cart/:id', to: 'cart#remove_from_cart', as: 'remove_from_cart'
 
-  scope '/check_out' do
+  scope 'check_out' do
     post 'create', to: 'check_out#create', as: 'check_out_create'
     get 'cancel', to: 'check_out#index', as: 'check_out_cancel'
     get 'success', to: 'check_out#success', as: 'check_out_success'
