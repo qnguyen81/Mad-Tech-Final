@@ -10,24 +10,25 @@
 # if Rails.env.development?
 #   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 # end
-require 'csv'
+# require 'csv'
 # province_data = File.read("#{Rails.root}/public/canadian-provinces.json")
 # records = JSON.parse(province_data)
 # records.each do |_short, full|
 #   Province.create!(name: full)
 # end
 # puts "#{Province.count} are seeded"
-cgrs = Category.create(
-  name: 'Pcs-Laptops',
-  description: 'High end pc-laptop'
-)
 
-laptop_data = File.read("#{Rails.root}/public/data_laptop.csv")
+# cgrs = Category.create(
+#   name: 'Pcs-Laptop',
+#   description: 'High end pc-laptop'
+# )
 
-laptops = CSV.parse(laptop_data, headers: true)
+# laptop_data = File.read("#{Rails.root}/public/data_laptop.csv")
 
-laptops.each do |row|
-  prod = cgrs.products.create(name: row[0], price: row['Price'], description: row[0])
-  downloaded_image = open(URI.escape(row['Thumbnail']))
-  prod.product_image.attach(io: downloaded_image, filename: "image-#{row[0]}.jpg")
-end
+# laptops = CSV.parse(laptop_data, headers: true)
+
+# laptops.each do |row|
+#   prod = cgrs.products.create(name: row[0], price: row['Price'], description: row[0])
+#   downloaded_image = open(URI.escape(row['Thumbnail']))
+#   prod.product_image.attach(io: downloaded_image, filename: "image-#{row[0]}.jpg")
+# end

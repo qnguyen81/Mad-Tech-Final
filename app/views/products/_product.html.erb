@@ -7,6 +7,7 @@
           <%end%>
           <div class="card-content" >
       <p class="title is-5"><%= product.name%></p>
+      <p class="title is-5"><%= product.price%></p>
           </div>
           <a><%= link_to 'add to cart', add_to_cart_path(product.id),method: :post, class: "btn"%></a>
           <a><%= link_to 'vew_details', show_path(product.id),class: "btn"%></a>
