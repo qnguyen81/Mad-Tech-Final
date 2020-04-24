@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.order(:name).page(params[:page]).per(2)
+    @categories = Category.order(:name).page(params[:page]).per(5)
   end
 
   # GET /breeds/:id
