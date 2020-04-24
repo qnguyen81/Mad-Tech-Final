@@ -19,12 +19,15 @@ class CartController < ApplicationController
     @new_hash = { @products.id => @product_id }
     @cart.merge!(@new_hash)
     session[:cart] = @cart
+    flash[:success] = 'Product Successfully Added! '
+    redirect_to '/'
   end
 
   def remove_from_cart
     @cart = session[:cart] if session[:cart].present?
     @cart.delete(params[:id])
     session[:cart] = @cart
+    flash[:success] = 'Product Successfully Removed! '
     redirect_to '/cart'
   end
 
