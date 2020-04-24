@@ -17,11 +17,12 @@
 #   Province.create!(name: full)
 # end
 # puts "#{Province.count} are seeded"
-category = Category.where('lower(name) LIKE ?', '%laptop%')
-puts category.name
-# laptop_data = File.read("#{Rails.root}/public/laptops.csv")
-# laptops = JSON.parse(laptop_data)
-# laptops.each do |_short, full|
-#   # category.products.create(name: full.Product, price: full.Price_euros, description: full.Inches + full.TypeName + )
-#   # puts full.Product
-# end
+cgrs = Category.where('name == "Laptop"')
+
+laptop_data = File.read("#{Rails.root}/public/laptops.csv")
+laptops = CSV.parse(laptop_data, headers: true)
+
+laptops.each do |row|
+  # category.products.create(name: full.Product, price: full.Price_euros, description: full.Inches + full.TypeName + )
+  puts row['TypeName'] + ' ' + row['Inches'] + ' ' + row['ScreenResolution'] + ' ' + row['Cpu'] + ' ' + row['Ram'] + ' ' + row['Memory'] + ' ' + row['Gpu'] + ' ' + row['OpSys']
+end
